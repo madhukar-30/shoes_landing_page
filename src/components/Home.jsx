@@ -2,6 +2,7 @@ import React from "react";
 import amazon from "../assets/amazon.png";
 import flipkart from "../assets/flipkart.png";
 import shoe from "../assets/nike_shoes.png";
+import SmoothShoeCanvas from "./SmoothShoeModel";
 import { menimg, womanimg, kidimg } from "../utils";
 // import { useNavigate } from 'react-router-dom'
 function Home() {
@@ -13,10 +14,10 @@ function Home() {
     alert(`${category} page coming soon!`)
   }
   return (
-    <section id="home" className="box-border overflow-x-hidden">
+    <section id="home" className="box-border overflow-x-hidden ">
       {/* Hero Section */}
-      <div className="flex flex-col lg:flex-row mt-10 w-full max-w-6xl mx-auto px-4 mb-32 gap-8">
-        <div className="flex-1">
+      <div className="flex flex-col-reverse md:flex-row mt-10 w-full max-w-7xl mx-auto px-4 mb-32 md:gap-6 gap-2">
+        <div className="flex-1 ">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-7 uppercase leading-tight">
             Your feet deserve the best
           </h1>
@@ -52,18 +53,16 @@ function Home() {
                   alt="amazon logo" 
                   className="w-full h-full object-contain"
                 />
+
+               
               </div>
             </div>
           </div>
         </div>
         
-        {/* Hero Image */}
+        {/* shoes model*/}
         <div className="flex-1">
-          <img 
-            src={shoe} 
-            alt="shoes image" 
-            className="w-full h-auto"
-          />
+            <SmoothShoeCanvas />
         </div>
       </div>
 
