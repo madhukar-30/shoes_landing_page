@@ -4,11 +4,11 @@ import flipkart from "../assets/flipkart.png";
 import shoe from "../assets/nike_shoes.png";
 import SmoothShoeCanvas from "./SmoothShoeModel";
 import { menimg, womanimg, kidimg } from "../utils";
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 function Home() {
     const handleCategoryClick = (category) => {
-      //  const navigate = useNavigate()
-      //  navigate(`/${category}`)
+       const navigate = useNavigate()
+       navigate(`/${category}`)
     console.log(`Clicked on ${category} - will route to /${category} page later`)
     // For now, show an alert or scroll to a section
     alert(`${category} page coming soon!`)
