@@ -1,62 +1,91 @@
-import React from "react";
-import logo from "../assets/logo.png";
+// src/components/Navbar.jsx
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="w-full flex justify-between items-center px-3 md:px-8 py-4 font-medium bg-white shadow-sm">
-      {/* Logo Section */}
-      <div className="flex-shrink-0">
-        <img 
-          src={logo} 
-          alt="Nike Logo" 
-          className="w-16 sm:w-20 h-auto"
-        />
-      </div>
-
-      {/* Navigation Menu */}
-      <nav className="w-3/4 sm:w-1/2 lg:w-1/4">
-        <ul className="flex max-[350px]:flex-col max-[350px]:gap-2 justify-between items-center h-full">
+    <nav className="w-full bg-white shadow-md">
+      <div className="flex items-center justify-between px-4 py-4 md:px-8">
+        <div>
+          <Link to="/" className="text-2xl font-bold text-black">
+            ShoesLand
+          </Link>
+        </div>
+        <ul className="hidden md:flex space-x-8">
           <li>
-            <a 
-              href="#menu" 
-              className="text-gray-700 hover:text-gray-900 focus:text-black transition-colors duration-300 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
-            >
-              Menu
-            </a>
+            <Link to="/" className="text-lg font-medium hover:text-gray-600">
+              Home
+            </Link>
           </li>
           <li>
-            <a 
-              href="#arrivals" 
-              className="text-gray-700 hover:text-gray-900 focus:text-black transition-colors duration-300 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
-            >
-              New Arrivals
-            </a>
+            <Link to="/men" className="text-lg font-medium hover:text-gray-600">
+              Men
+            </Link>
           </li>
           <li>
-            <a 
-              href="#about" 
-              className="text-gray-700 hover:text-gray-900 focus:text-black transition-colors duration-300 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
-            >
-              About
-            </a>
+            <Link to="/women" className="text-lg font-medium hover:text-gray-600">
+              Women
+            </Link>
           </li>
           <li>
-            <a 
-              href="#contact" 
-              className="text-gray-700 hover:text-gray-900 focus:text-black transition-colors duration-300 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
-            >
-              Contact
-            </a>
+            <Link to="/kids" className="text-lg font-medium hover:text-gray-600">
+              Kids
+            </Link>
           </li>
         </ul>
-      </nav>
+        <div className="hidden md:block">
+          {/* Changed from Shop Now to Login */}
+          <button className="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800">
+            Login
+          </button>
+        </div>
+        <div className="md:hidden">
+          <button 
+            onClick={() => setOpen(!open)}
+            className="text-3xl text-black"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+      </div>
 
-      {/* CTA Button */}
-      <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:bg-red-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50 flex-shrink-0">
-        Login
-      </button>
-    </header>
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-white absolute top-20 left-0 right-0 shadow-lg py-4 z-50">
+          <ul className="flex flex-col items-center space-y-4">
+            <li>
+              <Link to="/" className="text-lg font-medium hover:text-gray-600" onClick={() => setOpen(false)}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/men" className="text-lg font-medium hover:text-gray-600" onClick={() => setOpen(false)}>
+                Men
+              </Link>
+            </li>
+            <li>
+              <Link to="/women" className="text-lg font-medium hover:text-gray-600" onClick={() => setOpen(false)}>
+                Women
+              </Link>
+            </li>
+            <li>
+              <Link to="/kids" className="text-lg font-medium hover:text-gray-600" onClick={() => setOpen(false)}>
+                Kids
+              </Link>
+            </li>
+          </ul>
+          <div className="mt-4 text-center">
+            {/* Changed from Shop Now to Login */}
+            <button className="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800">
+              Login
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
-}
+};
 
 export default Navbar;
