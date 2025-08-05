@@ -57,44 +57,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Menu Categories Section */}
-      <section id="menu" className="flex flex-col md:flex-row w-full max-w-6xl mx-auto px-4 overflow-hidden">
-        {/* Men's Section */}
-        <Link to="/men" className="w-full md:w-1/3 p-4">
-          <div className="w-full h-64 mb-4 cursor-pointer">
-            <img 
-              src={menimg} 
-              alt="Man wearing shoes" 
-              className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform rounded-lg"
-            />
-          </div>
-          <p className="text-center font-medium">Explore Men's collection</p>
-        </Link>
-
-        {/* Kids Section */}
-        <Link to="/kids" className="w-full md:w-1/3 p-4">
-          <div className="w-full h-64 mb-4 cursor-pointer">
-            <img 
-              src={kidimg} 
-              alt="Kid wearing shoes" 
-              className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform rounded-lg"
-            />
-          </div>
-          <p className="text-center font-medium">Explore Kid's collection</p>
-        </Link>
-
-        {/* Women's Section */}
-        <Link to="/women" className="w-full md:w-1/3 p-4">
-          <div className="w-full h-64 mb-4 cursor-pointer">
-            <img 
-              src={womanimg} 
-              alt="Woman wearing shoes" 
-              className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform rounded-lg"
-            />
-          </div>
-          <p className="text-center font-medium">Explore Women's collection</p>
-        </Link>
-      </section>
+      <section id="NewArrival"></section>
     </section>
   );
 }

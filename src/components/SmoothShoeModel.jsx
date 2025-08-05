@@ -72,9 +72,9 @@ function ShoeModel() {
     <primitive 
       ref={shoeRef} 
       object={scene} 
- scale={[1.8, 1.45, 1.8]} // Adjusted scale for better fit
-      position={[0.2, -0.2, 0]} // Better positioning - slightly down and right
-      rotation={[0, Math.PI, 0]} // Initial rotation so toe faces text
+ scale={[1.8, 1.45, 1.8]} 
+      position={[0.2, -0.2, 0]} 
+      rotation={[0, Math.PI, 0]}
     />
   )
 }
@@ -101,7 +101,7 @@ function SmoothShoeCanvas() {
         {/* Enhanced user interaction controls */}
         <OrbitControls
           enablePan={false}
-          enableZoom={true}
+          enableZoom={false}
           maxDistance={7}
           minDistance={3}
           autoRotate={false}
