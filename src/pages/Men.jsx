@@ -1,55 +1,27 @@
-// src/pages/Men.jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "../components/Card";
+import useSneaker from "../hooks/useSneakers";
 
 const Men = () => {
-  const [shoes, setShoes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { sneakers, loading } = useSneaker();
 
-  useEffect(() => {
-    const fetchShoes = async () => {
-      try {
-        const baseUrl = import.meta.env.VITE_SNEAKS_BASE;
-        const response = await fetch(`${baseUrl}/sneakers?limit=20&gender=men`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Map API response to our expected format
-        const formattedShoes = data.results.map(sneaker => ({
-          id: sneaker.id,
-          name: sneaker.title,
-          price: sneaker.retailPrice || 99.99, // Default price
-          imageURL: sneaker.media.imageUrl || "https://via.placeholder.com/300x200?text=Shoe+Image",
-          category: "men"
-        }));
-        
-        setShoes(formattedShoes);
-      } catch (error) {
-        console.error("Error fetching shoes:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchShoes();
-  }, []);
+  // Filter for men's sneakers
+  const menSneakers = sneakers.filter(
+    (s) => s.gender?.toLowerCase() === "men" ||  s.gender?.toLowerCase() === "unisex" // depends on your API's structure
+  );
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Men's Collection</h1>
-      
+
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
         </div>
-      ) : shoes.length > 0 ? (
+      ) : menSneakers.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {shoes.map((shoe) => (
-            <Card key={shoe.id} shoe={shoe} />
+          {menSneakers.map((shoe) => (
+            <Card key={shoe._id} shoe={shoe} />
           ))}
         </div>
       ) : (

@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from "react";
 
-// 1️⃣  Read the base once, outside the hook body
-const BASE =
-  import.meta.env.VITE_SNEAKS_BASE || 'http://localhost:4000';
+const BASE = import.meta.env.VITE_SNEAKER_API || "http://localhost:3000";
 
-export default function useSneakers({ keyword = 'nike', limit = 20 }) {
-  const [data,    setData]   = useState([]);
-  const [error,   setError]  = useState(null);
-  const [loading, setLoad]   = useState(true);
+const useSneaker = () => {
+  const [sneakers, setSneakers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoad(true);
+    const fetchSneakers = async () => {
+      try {
+        const res = await fetch(`${BASE}`);
+        const data = await res.json();
+        setSneakers(data);
+      } catch (error) {
+        console.error("Error fetching sneakers:", error);
+      } finally {
+        setLoading(false); // ✅ Must be here
+      }
+    };
 
-    // 2️⃣  Call the SAME path you exposed in Express
-    fetch(`${BASE}/search?keywords=${encodeURIComponent(keyword)}&limit=${limit}`)
-      .then(r => (r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`)))
-      .then(setData)
-      .catch(e => setError(new Error(e)))
-      .finally(() => setLoad(false));
-  }, [keyword, limit]);
+    fetchSneakers();
+  }, []);
 
-  return { data, error, loading };
-}
+  return { sneakers, loading };
+};
+
+export default useSneaker;
