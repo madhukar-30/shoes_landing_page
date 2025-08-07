@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import amazon from "../assets/amazon.png";
 import flipkart from "../assets/flipkart.png";
 import SmoothShoeCanvas from "./SmoothShoeModel";
-import { menimg, womanimg, kidimg } from "../utils";
+import Showcase from "./Showcase";
+import { creativeShoesImg,shoesAnimation } from "../utils";
 
 function Home() {
   return (
@@ -57,7 +58,11 @@ function Home() {
         </div>
       </div>
 
-      <section id="NewArrival"></section>
+ <Showcase
+        creativeShoesImg={creativeShoesImg}
+        shoesAnimation={shoesAnimation}
+      />
+
     </section>
   );
 }
