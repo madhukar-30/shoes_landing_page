@@ -5,7 +5,7 @@ import amazon from "../assets/amazon.png";
 import flipkart from "../assets/flipkart.png";
 import SmoothShoeCanvas from "./SmoothShoeModel";
 import Showcase from "./Showcase";
-import { creativeShoesImg,shoesAnimation } from "../utils";
+import { creativeShoesImg,shoesAnimation, footflex} from "../utils";
 
 function Home() {
   return (
@@ -59,7 +59,7 @@ function Home() {
       </div>
 
  <Showcase
-        creativeShoesImg={creativeShoesImg}
+        footflexVideo={footflex}
         shoesAnimation={shoesAnimation}
       />
 
