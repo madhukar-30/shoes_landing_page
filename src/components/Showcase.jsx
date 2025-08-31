@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import NewArrivals from "../pages/NewArrivals";
 export default function Showcase({ footflexVideo, shoesAnimation }) {
   const leftVideoRef = useRef(null);
   const rightVideoRef = useRef(null);
@@ -97,6 +97,10 @@ export default function Showcase({ footflexVideo, shoesAnimation }) {
           className="w-full h-full min-h-[200px] md:min-h-[450px] object-cover rounded-xl shadow-md"
         />
       </div>
+    </section>
+
+    <section id="newArrivals">
+      <NewArrivals/>
     </section>
      </>
   );
